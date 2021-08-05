@@ -1,0 +1,8 @@
+<p>show-expenses works!</p>
+<div class="col">
+<h1>Gastos</h1>
+<hr>
+<ul>
+    <li *ngFor="let expense of expenses; let i = index">
+        {{ i + 1 }}- {{ expense }}</li>
+</ul>
