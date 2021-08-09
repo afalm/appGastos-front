@@ -1,5 +1,16 @@
-<ul>
-    <li *ngFor= "let expense of expenses">
-        {{ expense.quantity }}
-    </li>
-</ul>
+<table style="margin-top: 3%; margin-left: 5% " class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col"> Descripción </th>
+            <th scope="col"> Cantidad </th>
+            <th scope="col"> Fecha </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-warning" *ngFor= "let expense of expenseService.expenses">
+             <th>{{ expense.description }}</th> 
+             <td>{{ expense.quantity }}</td>
+             <td>{{ expense.date | date }} </td>
+        </tr>
+    </tbody>
+</table>

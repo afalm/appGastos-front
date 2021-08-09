@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Expense } from '../../models/expense';
+import { ExpensesService } from '../../services/expenses.service';
 @Component({
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
@@ -8,20 +8,18 @@ import { Expense } from '../../models/expense';
 })
 export class ExpensesComponent implements OnInit {
   
-  expenses: any[] = [];
-  constructor(private http: HttpClient){
-   
-    this.http.get('http://localhost:3800/api/expenses/')
-      .subscribe( (resp: any) => {
-        this.expenses = resp;
-        console.log(resp);
-      })
-      
-  }
-  
+  constructor(public expenseService: ExpensesService){}
   
   ngOnInit(): void {
-
+    this.getExpenses();
+  }
+  getExpenses(){
+    this.expenseService.getExpneses().subscribe(
+      res => {
+        this.expenseService.expenses = res
+      },
+      err => console.log(err)
+    )
   }
   
 }
