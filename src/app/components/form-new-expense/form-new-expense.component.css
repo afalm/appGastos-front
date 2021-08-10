@@ -1,0 +1,8 @@
+.card{
+    position: fixed;
+    display: block;
+    float: left;
+    width: 20%;
+    margin-left: 4%;
+    margin-top: 3%;
+}

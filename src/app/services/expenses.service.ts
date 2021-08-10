@@ -10,6 +10,7 @@ export class ExpensesService {
   URL_API = 'http://localhost:3800/api/expenses/';
   URL_API_CREATE = 'http://localhost:3800/api/expenses/create';
   selectedExpense: Expense = {
+    _id: "",
     quantity: 0,
     description: ""
   };
@@ -22,5 +23,11 @@ export class ExpensesService {
   }
   creteExpenses(expense: Expense){
     return this.http.post(this.URL_API_CREATE, expense);
+  }
+  deleteExpense(_id: string){
+    return this.http.delete(`${this.URL_API}/${_id}`);
+  }
+  putExpense(expense: Expense){
+    return this.http.put(`${this.URL_API}/${expense._id}`, expense);
   }
 }
