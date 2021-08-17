@@ -1,40 +1,44 @@
-
-#divButtons{
-    margin-right: 0px auto;
-    padding-right: 0rem;
-    padding-bottom: 1%;
-    width: 7em;
+.card{
+    margin-top: 10%;
+    margin-left: 6%;
+    margin-right: 6%;
 }
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 11px;
+    font-size: 16px;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;
-    padding-bottom: 1%;
     white-space: nowrap;
     word-wrap: normal;
     direction: ltr;
     margin-top: 0%;
 }
+.tdButtons{
+    height: 1em;
+}
+button .btn{
+    padding: auto;
+    margin: 0px auto;
+    margin-bottom: 0px auto;
+ 
+}
+.btn{
+    margin-right: auto !important;
+    margin-left: auto  !important;
+    width: 65%;
+    height: 35%;
+    
+}
 table{
     width: 100%;
     margin-top: 1rem;
-    padding-right: 10%;
+    padding-right: 1rem;
 }
-.card {
-    display: block;
-    float: right;
-    width: 29%;
-    margin-right: 8%;
-    margin-top: 3%;
-}
-.cardFormEdit{
-    width: 15%;
-    margin-right: 3%;
-}
+
 #buttonDelete{
-    margin-left: 15%;
+    margin-left: 15% !important;
+    margin-right: 0%;
 }

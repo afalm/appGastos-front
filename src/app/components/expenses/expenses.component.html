@@ -1,7 +1,9 @@
-<div class="card text-dark bg-light mb-3 showExpenses">
+<div class="card text-dark bg-light mb-6">
   <div class="card-header">Historial de gastos</div>
   <div class="card-body">
+    <div class="container">
     <h5 class="card-title">Gastos:</h5>
+    <div class="row row-cols-1-mb-3">
     <table class="table-ligth">
       <thead>
         <tr class="table-ligth">
@@ -9,48 +11,51 @@
           <th scope="col">Cantidad</th>
           <th scope="col">Fecha</th>
         </tr>
+      
       </thead>
       <tbody>
-        <tr *ngFor="let expense of expenseService.expenses;">
-          <th class="table-success" *ngIf="expense.quantity > 0">{{ expense.description }}</th>
-          <th class="table-danger"  *ngIf="expense.quantity < 0">{{ expense.description }}</th>
-          <td class="table-success" *ngIf="expense.quantity > 0">{{ expense.quantity | currency: "EUR" }}</td>
-          <td class="table-danger"  *ngIf="expense.quantity < 0">{{ expense.quantity | currency: "EUR" }}</td>
-          <td class="table-success" *ngIf="expense.quantity > 0">{{ expense.date | date:'shortDate'  }}</td>
-          <td class="table-danger"  *ngIf="expense.quantity < 0">{{ expense.date | date:'shortDate' }}</td>
-          <td class="table-danger"  *ngIf="expense.quantity < 0"><button
-              type="button"
-              class="btn btn-secondary btn-sm btnUpdate"
-              (click)="editExpense(expense)">
-              <i class="material-icons">edit</i>
-          </button>
-          <button
-            type="button"
-            id="buttonDelete"
-            class="btn btn-danger btnUpdate btn-sm"
-            (click)="deleteExpense(expense._id)">
-            <i class="material-icons">delete</i>
-         </button></td >
-         <td class="table-success " *ngIf="expense.quantity > 0"> <button
-              type="button"
-              (click)="editExpense(expense)"
-              class="btn btn-secondary btn-sm btnUpdate">
-              <i class="material-icons">edit</i>
-           </button>
-          <button
-           id="buttonDelete"
-           type="button"
-           (click)="deleteExpense(expense._id)"
-           class="btn btn-danger btnUpdate btn-sm">
-           <i class="material-icons">delete</i>
-        </button></td>
-       
-          </tr>
-          <tr class="table-success">
-            <th class="table-success">Total</th>
-            <td class="table-success">{{ total | currency: "EUR" }}</td>
-          </tr>
-      </tbody>
-    </table>
+            <tr  *ngFor="let expense of expenseService.expenses;">
+              <th class="table-success" *ngIf="expense.quantity > 0">{{ expense.description }}</th>
+              <th class="table-danger"  *ngIf="expense.quantity < 0">{{ expense.description }}</th>
+              <td class="table-success" *ngIf="expense.quantity > 0">{{ expense.quantity | currency: "EUR" }}</td>
+              <td class="table-danger"  *ngIf="expense.quantity < 0">{{ expense.quantity | currency: "EUR" }}</td>
+              <td class="table-success" *ngIf="expense.quantity > 0">{{ expense.date | date:'shortDate'  }}</td>
+              <td class="table-danger"  *ngIf="expense.quantity < 0">{{ expense.date | date:'shortDate' }}</td>
+              <td class="table-danger tdButtons" *ngIf="expense.quantity < 0"><button
+                  type="button"
+                  class="btn btn-secondary btn-sm btnUpdate"
+                  (click)="editExpense(expense)">
+                  <i class="material-icons">edit</i>
+              </button>
+              <button
+                type="button"
+                id="buttonDelete"
+                class="btn btn-danger btnUpdate btn-sm"
+                (click)="deleteExpense(expense._id)">
+                <i class="material-icons">delete</i>
+             </button></td >
+             <td class="table-success tdButtons" *ngIf="expense.quantity > 0"> <button
+                  type="button"
+                  (click)="editExpense(expense)"
+                  class="btn btn-secondary btn-sm btnUpdate">
+                  <i class="material-icons">edit</i>
+               </button>
+              <button
+               id="buttonDelete"
+               type="button"
+               (click)="deleteExpense(expense._id)"
+               class="btn btn-danger btnUpdate btn-sm">
+               <i class="material-icons">delete</i>
+            </button></td>
+           
+              </tr>
+              <tr class="table-success col-md-3 well">
+                <th class="table-success">Total</th>
+                <td class="table-success">{{ expenseService.total | currency: "EUR" }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
   </div>
 </div>

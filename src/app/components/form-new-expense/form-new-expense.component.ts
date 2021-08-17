@@ -13,33 +13,35 @@ import { ExpensesService } from '../../services/expenses.service';
 
 export class FormNewExpenseComponent implements OnInit {
   //TODO refrescar datos al expensesService
- // @ViewChild(ExpensesComponent) expensesComponent :ExpensesComponent;
-  
-constructor(
+ constructor(
   public expenseService: ExpensesService){}
   ngOnInit(): void {
   }
   addExpense(form: NgForm){
     if(form.value._id){
-      console.log('Actualizar')
+      this.expenseService.edit = true
       this.expenseService.putExpense(form.value).subscribe(
         res => {form.reset(),
-          alert('Gasto actualizado')
+          console.log('Gasto actualizado')
         },
         err => console.log(err)
-      )
-    }else{
-      console.log(form.value);
-      this.expenseService.creteExpenses(form.value).subscribe(
-        res => {
-          form.resetForm();
-          alert('Gasto creado')
-        },
-        err => console.log(err)
-      )
-    }
-  }
-  resetForm(form: NgForm){
-    form.reset();
-  }
+        )
+        this.expenseService.edit = false;
+      }else{
+        console.log(form.value);
+        this.expenseService.edit = false;
+        this.expenseService.creteExpenses(form.value).subscribe(
+          res => {
+            console.log('Gasto creado')
+            
+          },
+          err => console.log(err)
+          )
+        }
+        this.expenseService.cargarExpenses()
+        form.resetForm();
+      }
+      resetForm(form: NgForm){
+        form.reset();
+      }
 }

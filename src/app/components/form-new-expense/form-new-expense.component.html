@@ -1,5 +1,5 @@
-<div class="card text-dark bg-light mb-3">
-  <div class="card-header">Crear o modificar gastos</div>
+<div class="card text-dark bg-light mb-3" *ngIf="!expenseService.edit">
+  <div class="card-header">Nueva operación</div>
   <div class="card-body">
     <form #expenseForm="ngForm" (ngSubmit)="addExpense(expenseForm)">
       <input
@@ -43,7 +43,58 @@
           <button class="btn btn-outline-success" type="submit">Guardar</button>
         </div>
       </div>
-      
+    </form>
+  </div>
+</div>
+<div
+  *ngIf="expenseService.edit"
+  id="editCard"
+  class="card text-dark border-success mb-3"
+>
+  <div class="card-header">Modificar Operación</div>
+  <div class="card-body">
+    <form #expenseForm="ngForm" (ngSubmit)="addExpense(expenseForm)">
+      <input
+        type="hidden"
+        name="_id"
+        [(ngModel)]="expenseService.selectedExpense._id"
+      />
+      <div class="form-group">
+        <input
+          type="number"
+          class="form-control"
+          name="quantity"
+          [(ngModel)]="expenseService.selectedExpense.quantity"
+          placeholder="Introduzca cantidad"
+          id="inputDefaultQuantity"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="description"
+          [(ngModel)]="expenseService.selectedExpense.description"
+          placeholder="Introduzca descripción"
+          id="inputDefaultDescription"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="date"
+          [(ngModel)]="expenseService.selectedExpense.date"
+          placeholder="Introduzca fecha"
+          id="inputDefaultDate"
+        />
+      </div>
+      <div class="form-group">
+        <br />
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-success" type="submit">Guardar</button>
+        </div>
+      </div>
     </form>
   </div>
 </div>

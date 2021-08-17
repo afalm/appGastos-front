@@ -5,7 +5,11 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'
 import { ExpensesComponent } from './components/expenses/expenses.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FormNewExpenseComponent } from './components/form-new-expense/form-new-expense.component'
+import { FormNewExpenseComponent } from './components/form-new-expense/form-new-expense.component';
+import { DonaComponent } from './components/dona/dona.component'
+//Graficos
+import { ChartsModule } from 'ng2-charts';
+
 
 
 @NgModule({
@@ -13,12 +17,14 @@ import { FormNewExpenseComponent } from './components/form-new-expense/form-new-
     AppComponent,
     ExpensesComponent,
     NavbarComponent,
-    FormNewExpenseComponent
+    FormNewExpenseComponent,
+    DonaComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
